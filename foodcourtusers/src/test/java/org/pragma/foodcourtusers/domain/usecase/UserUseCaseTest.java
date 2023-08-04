@@ -77,5 +77,7 @@ class UserUseCaseTest{
 
     @Test
     void deleteUser (){
+        System.out.println("Hello World");
+        System.out.println("Hello World");
     }
 }
