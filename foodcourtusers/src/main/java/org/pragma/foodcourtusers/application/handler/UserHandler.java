@@ -29,15 +29,13 @@ public class UserHandler implements IUserHandler {
 
     @Override
     public void saveUser(UserRequest userRequest) {
-        Role role = iRoleServicePort.saveRole(iRoleServicePort.getRole(userRequest.getRoleId()));
         User user = userRequestMapper.toUser(userRequest);
-        user.setRoleId(role.getId());
         iUserServicePort.saveUser(user);
     }
 
     @Override
     public List<UserResponse> getAllUsers() {
-        return userResponseMapper.toResponseList(iUserServicePort.getAllUsers(),iRoleServicePort.getAllRoles());
+        return userResponseMapper.toResponseList(iUserServicePort.getAllUsers());
     }
 
     @Override

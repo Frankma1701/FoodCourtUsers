@@ -6,21 +6,29 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.pragma.foodcourtusers.infrastructure.validator.LegalAge;
+import org.pragma.foodcourtusers.application.validator.LegalAge;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user" , uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserEntity {
+public class UserEntity implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "El nombre ingresado no puede estar vacío")
     private String name;
     private String lastName;
     @Pattern(regexp = "\\d+" , message = "El documento deben ser solos números")
@@ -37,5 +45,42 @@ public class UserEntity {
     @NotNull(message = "El correo ingresado no puede ser nulo")
     private String email;
     private String password;
-    private Long roleId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn( name = "role_id",foreignKey = @ForeignKey(name = "fk_user_role"))
+    private RoleEntity roleEntity;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities (){
+        return List.of(new SimpleGrantedAuthority(roleEntity.getName()));
+    }
+
+    @Override
+    public String getPassword (){
+        return password;
+    }
+
+    @Override
+    public String getUsername (){
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired (){
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked (){
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired (){
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled (){
+        return true;
+    }
 }

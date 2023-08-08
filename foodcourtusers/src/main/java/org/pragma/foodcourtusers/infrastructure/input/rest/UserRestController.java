@@ -38,27 +38,33 @@ public class UserRestController{
         return ResponseEntity.ok(userHandler.getUser(documentId));
     }
 
-    @PutMapping("/")
-    public ResponseEntity<Void> updateUser(@RequestBody UserRequest userRequest){
-        userHandler.updateUser(userRequest);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/saludar")
+    public String getSaludo(){
+        String message = "Hola mundo desde saludar";
+        return message;
     }
 
-    @DeleteMapping("/{documentId}")
-    public ResponseEntity<Void> deleteUser( String documentId){
-        userHandler.deleteUser(documentId);
-        return ResponseEntity.noContent().build();
+        @PutMapping("/")
+        public ResponseEntity<Void> updateUser (@RequestBody UserRequest userRequest){
+            userHandler.updateUser(userRequest);
+            return ResponseEntity.noContent().build();
+        }
+
+        @DeleteMapping("/{documentId}")
+        public ResponseEntity<Void> deleteUser (String documentId){
+            userHandler.deleteUser(documentId);
+            return ResponseEntity.noContent().build();
+        }
+
+        @PostMapping("/create-owner")
+        public ResponseEntity<Void> saveOwner (@RequestBody UserRequest userRequest){
+            userRequest.setRoleId(2L);
+            String hashPassword = encryptHandler.encryptPassword(userRequest.getPassword());
+            userRequest.setPassword(hashPassword);
+            userHandler.saveUser(userRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+
+
     }
 
-    @PostMapping("/create-owner")
-    public ResponseEntity<Void> saveOwner(@RequestBody UserRequest userRequest){
-        userRequest.setRoleId(2L);
-        String hashPassword = encryptHandler.encryptPassword(userRequest.getPassword());
-        userRequest.setPassword(hashPassword);
-        userHandler.saveUser(userRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-
-
-}

@@ -1,8 +1,7 @@
-package org.pragma.foodcourtusers.infrastructure.validator;
+package org.pragma.foodcourtusers.application.validator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-
 import java.lang.annotation.*;
 
 @Documented

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.main.iml" filepath="$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.test.iml" filepath="$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.main~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.test~1.iml" filepath="$PROJECT_DIR$/.idea/modules/foodcourtusers.foodcourtusers.test~1.iml" />
     </modules>
   </component>
 </project>

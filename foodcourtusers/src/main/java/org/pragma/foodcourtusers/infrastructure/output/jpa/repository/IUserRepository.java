@@ -11,4 +11,7 @@ public interface IUserRepository extends JpaRepository<UserEntity,Long> {
     Optional<UserEntity> findByDocumentId(String documentId);
 
     void deleteByDocumentId(String documentId);
+
+
+    Optional<UserEntity> findByEmail(String email);
 }

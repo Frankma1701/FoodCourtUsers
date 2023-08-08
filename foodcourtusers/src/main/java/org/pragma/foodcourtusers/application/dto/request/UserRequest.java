@@ -2,10 +2,7 @@ package org.pragma.foodcourtusers.application.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.pragma.foodcourtusers.domain.model.Role;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter

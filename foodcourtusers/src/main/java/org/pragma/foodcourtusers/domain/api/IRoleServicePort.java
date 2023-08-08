@@ -4,7 +4,6 @@ import org.pragma.foodcourtusers.domain.model.Role;
 
 import java.util.List;
 
-//Interface that allow create Api
 public interface IRoleServicePort {
 
     Role saveRole(Role role);
