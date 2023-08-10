@@ -1,16 +1,21 @@
-package org.pragma.foodcourtusers.application.dto.response;
+package org.pragma.foodcourtusers.application.dto.request;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.time.LocalDate;
-@Setter
+
 @Getter
-public class UserResponse {
+@Setter
+@Builder
+public class OwnerRequest{
+
     private String name;
     private String lastName;
     private String documentId;
     private String cellPhoneNumber;
     private LocalDate birthDate;
     private String email;
-    private Long roleId;
+    private String password;
 }

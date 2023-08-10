@@ -1,11 +1,13 @@
 package org.pragma.foodcourtusers.application.dto.request;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 public class UserRequest {
 
     private String name;

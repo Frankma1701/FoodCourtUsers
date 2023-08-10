@@ -2,12 +2,9 @@ package org.pragma.foodcourtusers.infrastructure.output.jpa.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.pragma.foodcourtusers.application.dto.utils.Roles;
 import org.pragma.foodcourtusers.application.validator.LegalAge;
-import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class UserEntity implements UserDetails{
 
     @Id
@@ -51,7 +49,7 @@ public class UserEntity implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities (){
-        return List.of(new SimpleGrantedAuthority(roleEntity.getName()));
+        return List.of(new SimpleGrantedAuthority("ROLE_"+ Roles.getNameById(roleEntity.getId())));
     }
 
     @Override

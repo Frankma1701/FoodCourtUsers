@@ -28,7 +28,6 @@ public interface UserResponseMapper {
                     userResponse.setCellPhoneNumber(user.getCellPhoneNumber());
                     userResponse.setBirthDate(user.getBirthDate());
                     userResponse.setEmail(user.getEmail());
-                    userResponse.setPassword(user.getPassword());
                     userResponse.setRoleId(user.getRoleId());
                     return userResponse;
                 }).toList();

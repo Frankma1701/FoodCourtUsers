@@ -2,6 +2,7 @@ package org.pragma.foodcourtusers.application.handler;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.pragma.foodcourtusers.application.dto.request.OwnerRequest;
 import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.UserResponse;
 import org.pragma.foodcourtusers.application.mapper.request.RoleDtoMapper;
@@ -11,6 +12,7 @@ import org.pragma.foodcourtusers.domain.api.IRoleServicePort;
 import org.pragma.foodcourtusers.domain.api.IUserServicePort;
 import org.pragma.foodcourtusers.domain.model.Role;
 import org.pragma.foodcourtusers.domain.model.User;
+import org.pragma.foodcourtusers.application.dto.utils.Roles;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,9 +30,17 @@ public class UserHandler implements IUserHandler {
 
 
     @Override
-    public void saveUser(UserRequest userRequest) {
+    public User saveUser(UserRequest userRequest) {
         User user = userRequestMapper.toUser(userRequest);
-        iUserServicePort.saveUser(user);
+        return iUserServicePort.saveUser(user);
+    }
+
+    @Override
+    public User saveOwner(OwnerRequest ownerRequest) {
+        UserRequest userRequest = userRequestMapper.toUserRequest(ownerRequest);
+        userRequest.setRoleId(Roles.OWNER.getId());
+        User user = userRequestMapper.toUser(userRequest);
+        return iUserServicePort.saveUser(user);
     }
 
     @Override

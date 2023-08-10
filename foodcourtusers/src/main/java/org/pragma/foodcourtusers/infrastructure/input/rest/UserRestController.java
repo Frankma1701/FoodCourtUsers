@@ -2,9 +2,9 @@ package org.pragma.foodcourtusers.infrastructure.input.rest;
 
 
 import lombok.RequiredArgsConstructor;
+import org.pragma.foodcourtusers.application.dto.request.OwnerRequest;
 import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.UserResponse;
-import org.pragma.foodcourtusers.application.handler.EncryptHandler;
 import org.pragma.foodcourtusers.application.handler.UserHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,6 @@ import java.util.List;
 public class UserRestController{
 
     private final UserHandler userHandler;
-    private final EncryptHandler encryptHandler;
 
 
 
@@ -57,14 +56,9 @@ public class UserRestController{
         }
 
         @PostMapping("/create-owner")
-        public ResponseEntity<Void> saveOwner (@RequestBody UserRequest userRequest){
-            userRequest.setRoleId(2L);
-            String hashPassword = encryptHandler.encryptPassword(userRequest.getPassword());
-            userRequest.setPassword(hashPassword);
-            userHandler.saveUser(userRequest);
+        public ResponseEntity<Void> saveOwner (@RequestBody OwnerRequest ownerRequest){
+            userHandler.saveOwner(ownerRequest);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
-
-
     }
 
