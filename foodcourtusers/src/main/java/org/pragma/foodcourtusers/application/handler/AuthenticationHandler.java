@@ -1,29 +1,25 @@
-package org.pragma.foodcourtusers.infrastructure.security;
+package org.pragma.foodcourtusers.application.handler;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.pragma.foodcourtusers.application.dto.request.AuthenticationRequest;
+import org.pragma.foodcourtusers.application.dto.request.OwnerRequest;
 import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.JwtResponse;
-import org.pragma.foodcourtusers.application.mapper.request.UserRequestMapper;
-import org.pragma.foodcourtusers.domain.api.IUserServicePort;
-import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.RoleEntity;
+import org.pragma.foodcourtusers.application.dto.utils.Roles;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.UserEntity;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IRoleRepository;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IUserRepository;
+import org.pragma.foodcourtusers.infrastructure.security.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class AuthenticationService{
+public class AuthenticationHandler{
 
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
@@ -43,13 +39,31 @@ public class AuthenticationService{
                 .roleEntity(iRoleRepository.getReferenceById(userRequest.getRoleId()))
                 .build();
         iUserRepository.save(user);
-        System.out.println("Las getAutorities de User son : ");
-        user.getAuthorities().forEach(System.out::println);
         String jwtToken = jwtService.generateToken(user);
         return JwtResponse.builder()
                 .token(jwtToken)
                 .build();
     }
+
+    public JwtResponse registerUser(OwnerRequest ownerRequest , Long roleId) {
+        var user = UserEntity.builder()
+                .name(ownerRequest.getName())
+                .lastName(ownerRequest.getLastName())
+                .documentId(ownerRequest.getDocumentId())
+                .cellPhoneNumber(ownerRequest.getCellPhoneNumber())
+                .birthDate(ownerRequest.getBirthDate())
+                .email(ownerRequest.getEmail())
+                .password(passwordEncoder.encode(ownerRequest.getPassword()))
+                .roleEntity(iRoleRepository.getReferenceById(roleId))
+                .build();
+        iUserRepository.save(user);
+        String jwtToken = jwtService.generateToken(user);
+        return JwtResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
+
 
     public JwtResponse signIn (AuthenticationRequest authenticationRequest){
         authenticationManager.authenticate(
@@ -61,8 +75,6 @@ public class AuthenticationService{
         var user = iUserRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
         String jwtToken = jwtService.generateToken(user);
-        System.out.println("Las getAutorities de User son : ");
-        user.getAuthorities().forEach(grantedAuthority -> System.out.println(grantedAuthority.toString()));
         return JwtResponse.builder().token(jwtToken).build();
     }
 

@@ -17,7 +17,7 @@ public interface UserRequestMapper {
     @Mapping(target = "id", source = "userRequest.roleId")
     Role toRole(UserRequest userRequest);
 
-    @Mapping(target = "id", source = "ownerRequest.id")
+    @Mapping(target = "name", source = "ownerRequest.name")
     UserRequest toUserRequest(OwnerRequest ownerRequest);
     User toUser(UserRequest userRequest);
 }

@@ -34,7 +34,6 @@ public class JwtService{
         List<String > roles = new ArrayList<>();
         userDetails.getAuthorities().forEach(authority -> roles.add(authority.getAuthority()));
         extraClaims.put("roles", roles);
-
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
