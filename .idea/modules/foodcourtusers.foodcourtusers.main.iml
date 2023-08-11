@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../foodcourtusers/build/generated/sources/annotationProcessor/java/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../foodcourtusers/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+    </content>
+  </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="1b209da5-3147-44ec-b209-afd9a238a236" />
+    <option name="uniqueId" value="1b8a39e5-8ebc-40c1-a5df-a23a287ab8ff" />
   </component>
 </module>
