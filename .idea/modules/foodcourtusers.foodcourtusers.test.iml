@@ -6,6 +6,10 @@
     </content>
   </component>
   <component name="SonarLintModuleSettings">
+<<<<<<< HEAD
     <option name="uniqueId" value="d31aba8d-052a-4456-b729-30a3dcc2f966" />
+=======
+    <option name="uniqueId" value="be71e433-17fc-4a83-9799-166de1ac9af8" />
+>>>>>>> HU_6_create_employee
   </component>
 </module>
