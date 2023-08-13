@@ -31,7 +31,7 @@ public class SecurityConfiguration{
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .authenticationProvider(authenticationProvider)
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/auth/register" ,"/auth/register-customer", "/auth/sign-in","/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                                .requestMatchers("/user/**","/auth/register" ,"/auth/register-customer", "/auth/sign-in","/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                                 .requestMatchers("/auth/register-owner").hasRole("ADMIN")
                                 .requestMatchers("/auth/register-employee").hasRole("OWNER")
                         .anyRequest().denyAll()

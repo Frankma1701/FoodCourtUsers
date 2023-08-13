@@ -1,4 +1,4 @@
-package org.pragma.foodcourtusers.application.handler;
+package org.pragma.foodcourtusers.infrastructure.security;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,7 @@ public class AuthenticationHandler{
                 .roleEntity(iRoleRepository.getReferenceById(userRequest.getRoleId()))
                 .build();
         iUserRepository.save(user);
-        String jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user , user.getId());
         return JwtResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -57,13 +57,11 @@ public class AuthenticationHandler{
                 .roleEntity(iRoleRepository.getReferenceById(roleId))
                 .build();
         iUserRepository.save(user);
-        String jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user, user.getId());
         return JwtResponse.builder()
                 .token(jwtToken)
                 .build();
     }
-
-
 
     public JwtResponse signIn (AuthenticationRequest authenticationRequest){
         authenticationManager.authenticate(
@@ -74,7 +72,7 @@ public class AuthenticationHandler{
         );
         var user = iUserRepository.findByEmail(authenticationRequest.getEmail())
                 .orElseThrow();
-        String jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user, user.getId());
         return JwtResponse.builder().token(jwtToken).build();
     }
 

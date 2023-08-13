@@ -6,6 +6,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +26,18 @@ public class JwtService{
         return extractClaim(token,Claims::getSubject);
     }
 
-    public String generateToken(UserDetails userDetails){
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails, Long userId){
+        return generateToken(new HashMap<>(), userDetails, userId);
     }
 
     public String generateToken(
         Map<String , Object> extraClaims,
-        UserDetails userDetails){
+        UserDetails userDetails, Long userId){
         List<String > roles = new ArrayList<>();
         userDetails.getAuthorities().forEach(authority -> roles.add(authority.getAuthority()));
+        extraClaims.put("id", userId);
         extraClaims.put("roles", roles);
+
         return Jwts
                 .builder()
                 .setClaims(extraClaims)

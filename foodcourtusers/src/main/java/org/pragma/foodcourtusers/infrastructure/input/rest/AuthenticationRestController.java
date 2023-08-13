@@ -8,8 +8,7 @@ import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.JwtResponse;
 import org.pragma.foodcourtusers.application.dto.utils.Roles;
 import org.pragma.foodcourtusers.application.handler.IUserHandler;
-import org.pragma.foodcourtusers.application.handler.AuthenticationHandler;
-import org.springframework.http.HttpHeaders;
+import org.pragma.foodcourtusers.infrastructure.security.AuthenticationHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

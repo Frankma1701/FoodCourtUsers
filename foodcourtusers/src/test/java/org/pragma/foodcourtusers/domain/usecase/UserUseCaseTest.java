@@ -36,19 +36,7 @@ class UserUseCaseTest{
 
     @BeforeEach
     void setUp(){
-        mockObject = new User(1L,"Pedro","Perez", "14124",
-                "431124", LocalDate.of(2001,4,13),
-                "lopezpedro@hm.co", "pedroperez--",2L);
-        mockObject1 = new User(1L,"Pedro","Perez", "1452",
-                "431124", LocalDate.of(2001,4,13),
-                "lopezpedro@hm.co", "pedroperez--",2L);
 
-        expectedObject = new User(1L,"Pedro","Perez", "14124",
-                "431124", LocalDate.of(2001,4,13),
-                "lopezpedro@hm.co", "pedroperez--",2L);
-        expectedUpdateObject = new User(1L,"Pedro","Perez", "14124",
-                "431124", LocalDate.of(2001,4,13),
-                "lopezpedro@hm.co", "pedroperez--",2L);
     }
 
     @Test
