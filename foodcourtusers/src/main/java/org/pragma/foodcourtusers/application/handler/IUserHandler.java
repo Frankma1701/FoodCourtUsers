@@ -12,12 +12,6 @@ public interface IUserHandler {
 
     User saveUser(UserRequest userRequest);
 
-    User saveOwner(OwnerRequest ownerRequest);
-    List<UserResponse> getAllUsers();
-
     UserResponse getUser(String documentId);
 
-    void updateUser(UserRequest userRequest);
-
-    void deleteUser(String documentId);
 }

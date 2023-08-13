@@ -1,7 +1,4 @@
 package org.pragma.foodcourtusers.domain.usecase;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,74 +7,47 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.pragma.foodcourtusers.domain.model.User;
 import org.pragma.foodcourtusers.domain.spi.IUserPersistencePort;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
+import org.pragma.foodcourtusers.util.ConstantsTests;
+import org.pragma.foodcourtusers.util.FactoryUser;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
 class UserUseCaseTest{
-
     @Mock
     private IUserPersistencePort iUserPersistencePort;
-
     @InjectMocks
     private UserUseCase userUseCase;
-
-    private User mockObject;
-    private User mockObject1;
-
-    private User expectedObject;
-
-    private User expectedUpdateObject;
-
-
-
-
-    @BeforeEach
-    void setUp(){
-
-    }
-
     @Test
     void saveUser (){
-        Mockito.when(iUserPersistencePort.saveUser(mockObject)).thenReturn(mockObject);
-        User resultObject = userUseCase.saveUser(mockObject);
-        Assertions.assertEquals(expectedObject.getId(),resultObject.getId(), "Los ids de los usuarios son iguales");
-        Assertions.assertEquals(expectedObject.getName(),resultObject.getName(), "Los ids de los usuarios son iguales");
-        Mockito.verify(iUserPersistencePort).saveUser(mockObject);
+        when(iUserPersistencePort.saveUser(FactoryUser.mockObject)).thenReturn(FactoryUser.mockObject);
+        User resultObject = userUseCase.saveUser(FactoryUser.mockObject);
+        assertEquals(FactoryUser.expectedObject.getId(),resultObject.getId(), ConstantsTests.ID_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getName(),resultObject.getName(), ConstantsTests.NAME_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getLastName(),resultObject.getLastName(), ConstantsTests.LASTNAME_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getDocumentId(),resultObject.getDocumentId(), ConstantsTests.DOCUMENT_ID_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getCellPhoneNumber(),resultObject.getCellPhoneNumber(), ConstantsTests.CELL_PHONE_NUMBER_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getBirthDate(),resultObject.getBirthDate(), ConstantsTests.BIRTH_DATE_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getEmail(),resultObject.getEmail(), ConstantsTests.EMAIL_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getPassword(),resultObject.getPassword(), ConstantsTests.PASSWORD_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getRoleId(),resultObject.getRoleId(), ConstantsTests.ROLE_ID_USER_EQUAL);
+        verify(iUserPersistencePort).saveUser(FactoryUser.mockObject);
     }
-
-    @Test
-    void getAllUsers (){
-        Mockito.when(iUserPersistencePort.getAllUsers()).thenReturn(Arrays.asList(mockObject,mockObject1));
-        Assertions.assertNotNull(userUseCase.getAllUsers());
-        userUseCase.saveUser(mockObject);
-        userUseCase.saveUser(mockObject1);
-        List<User> userList = userUseCase.getAllUsers();
-        Assertions.assertNotNull(userList);
-        Assertions.assertEquals(2,userList.size());
-    }
-
     @Test
     void getUser (){
-        Mockito.when(iUserPersistencePort.getUser("14124")).thenReturn(mockObject);
-        User resultObject = userUseCase.getUser("14124");
-        Assertions.assertEquals(expectedObject.getId(),resultObject.getId(), "Los ids de los usuarios son iguales");
-        Assertions.assertEquals(expectedObject.getName(),resultObject.getName(), "Los ids de los usuarios son iguales");
-        Mockito.verify(iUserPersistencePort).getUser("14124");
-    }
-
-    @Test
-    void updateUser (){
-        userUseCase.updateUser(expectedUpdateObject);
-        Mockito.verify(iUserPersistencePort).updateUser(expectedUpdateObject);
-    }
-
-    @Test
-    void deleteUser (){
-        String documentId = "123";
-        userUseCase.deleteUser(documentId);
-        Mockito.verify(iUserPersistencePort).deleteUser(documentId);
+        Mockito.when(iUserPersistencePort.getUser(ConstantsTests.DOCUMENT_ID_USER_TO_ASK)).thenReturn(FactoryUser.mockObject);
+        User resultObject = userUseCase.getUser(ConstantsTests.DOCUMENT_ID_USER_TO_ASK);
+        assertEquals(FactoryUser.expectedObject.getId(),resultObject.getId(), ConstantsTests.ID_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getName(),resultObject.getName(), ConstantsTests.NAME_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getLastName(),resultObject.getLastName(), ConstantsTests.LASTNAME_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getDocumentId(),resultObject.getDocumentId(), ConstantsTests.DOCUMENT_ID_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getCellPhoneNumber(),resultObject.getCellPhoneNumber(), ConstantsTests.CELL_PHONE_NUMBER_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getBirthDate(),resultObject.getBirthDate(), ConstantsTests.BIRTH_DATE_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getEmail(),resultObject.getEmail(), ConstantsTests.EMAIL_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getPassword(),resultObject.getPassword(), ConstantsTests.PASSWORD_USER_EQUAL);
+        assertEquals(FactoryUser.expectedObject.getRoleId(),resultObject.getRoleId(), ConstantsTests.ROLE_ID_USER_EQUAL);
+        verify(iUserPersistencePort).getUser(ConstantsTests.DOCUMENT_ID_USER_TO_ASK);
     }
 }

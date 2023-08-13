@@ -6,7 +6,7 @@ import org.pragma.foodcourtusers.application.dto.request.AuthenticationRequest;
 import org.pragma.foodcourtusers.application.dto.request.OwnerRequest;
 import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.JwtResponse;
-import org.pragma.foodcourtusers.application.dto.utils.Roles;
+import org.pragma.foodcourtusers.infrastructure.util.Roles;
 import org.pragma.foodcourtusers.application.handler.IUserHandler;
 import org.pragma.foodcourtusers.infrastructure.security.AuthenticationHandler;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthenticationRestController{
 
-    private final IUserHandler iUserHandler;
     private  final AuthenticationHandler authenticationService;
 
 
@@ -45,7 +44,6 @@ public class AuthenticationRestController{
     public ResponseEntity<JwtResponse> signIn(@RequestBody AuthenticationRequest authenticationRequest) {
 
         return ResponseEntity.ok(authenticationService.signIn(authenticationRequest));
-
     }
 
     }

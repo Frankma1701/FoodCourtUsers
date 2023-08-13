@@ -1,4 +1,4 @@
-package org.pragma.foodcourtusers.application.dto.utils;
+package org.pragma.foodcourtusers.infrastructure.util;
 
 public enum Roles{
 

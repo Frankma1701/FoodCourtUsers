@@ -1,18 +1,10 @@
 package org.pragma.foodcourtusers.application.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@Getter
 public class AuthenticationRequest{
-
     private String email;
     private String password;
-
-
 }

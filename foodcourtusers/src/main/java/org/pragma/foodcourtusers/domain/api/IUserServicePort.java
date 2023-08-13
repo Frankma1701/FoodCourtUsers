@@ -9,12 +9,6 @@ public interface IUserServicePort {
 
     User saveUser(User user);
 
-    List<User> getAllUsers();
-
     User getUser(String documentId);
-
-    void updateUser(User user);
-
-    void deleteUser(String documentId);
-
+    
 }

@@ -1,4 +1,4 @@
-package org.pragma.foodcourtusers.application.validator;
+package org.pragma.foodcourtusers.infrastructure.output.jpa.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

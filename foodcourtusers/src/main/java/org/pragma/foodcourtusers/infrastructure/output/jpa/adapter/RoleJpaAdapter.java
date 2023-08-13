@@ -20,37 +20,10 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class RoleJpaAdapter implements IRolePersistencePort {
-
     private final IRoleRepository iRoleRepository;
     private final RoleEntityMapper roleEntityMapper;
-
-    @Override
-    public Role saveRole(Role role) {
-        return roleEntityMapper.toRole(iRoleRepository.save(roleEntityMapper.toEntity(role)));
-    }
-
-    @Override
-    public List<Role> getAllRoles() {
-        List<RoleEntity> roleEntityList = iRoleRepository.findAll();
-        if(roleEntityList.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return roleEntityMapper.toRoleList(roleEntityList);
-    }
-
     @Override
     public Role getRole(Long roleId) {
         return roleEntityMapper.toRole(iRoleRepository.findById(roleId).orElseThrow(RoleNotFoundException::new));
-    }
-
-    @Override
-    public void updateRole(Role role) {
-        iRoleRepository.save(roleEntityMapper.toEntity(role));
-
-    }
-
-    @Override
-    public void deleteRole(Long roleId) {
-        iRoleRepository.deleteById(roleId);
     }
 }

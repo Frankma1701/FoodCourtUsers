@@ -6,13 +6,7 @@ import java.util.List;
 
 public interface IRoleServicePort {
 
-    Role saveRole(Role role);
-    List<Role> getAllRoles();
 
     Role getRole(Long roleId);
-
-    void updateRole(Role role);
-
-    void deleteRole(Long roleId);
 
 }

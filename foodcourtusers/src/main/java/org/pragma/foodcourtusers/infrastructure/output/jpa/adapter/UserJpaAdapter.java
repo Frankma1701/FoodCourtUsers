@@ -30,26 +30,8 @@ public class UserJpaAdapter implements IUserPersistencePort {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        List<UserEntity> userEntityList = iUserRepository.findAll();
-        if(userEntityList.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return userEntityMapper.toUserList(userEntityList);
-    }
-
-    @Override
     public User getUser(String documentId) {
         return userEntityMapper.toUser(iUserRepository.findByDocumentId(documentId).orElseThrow(UserNotFoundException::new));
     }
 
-    @Override
-    public void updateUser(User user) {
-        iUserRepository.save(userEntityMapper.toEntity(user));
-    }
-
-    @Override
-    public void deleteUser(String documentId) {
-        iUserRepository.deleteByDocumentId(documentId);
-    }
 }
