@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$/../../foodcourtusers/build/generated/sources/annotationProcessor/java/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../foodcourtusers/build/generated/sources/annotationProcessor/java/test" isTestSource="true" generated="true" />
-    </content>
-  </component>
   <component name="SonarLintModuleSettings">
-<<<<<<< HEAD
-    <option name="uniqueId" value="d31aba8d-052a-4456-b729-30a3dcc2f966" />
-=======
-    <option name="uniqueId" value="be71e433-17fc-4a83-9799-166de1ac9af8" />
->>>>>>> HU_6_create_employee
+    <option name="uniqueId" value="4ac8101a-f2ed-4839-91b2-f97b0311ff7d" />
   </component>
 </module>
