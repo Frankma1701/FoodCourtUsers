@@ -5,7 +5,7 @@ import org.pragma.foodcourtusers.domain.spi.IRolePersistencePort;
 
 public class RoleUseCase implements IRoleServicePort{
 
-    private IRolePersistencePort iRolePersistencePort;
+    private final IRolePersistencePort iRolePersistencePort;
 
     public RoleUseCase (IRolePersistencePort iRolePersistencePort){
         this.iRolePersistencePort = iRolePersistencePort;

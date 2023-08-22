@@ -3,14 +3,11 @@ package org.pragma.foodcourtusers.infrastructure.output.jpa.adapter;
 import lombok.RequiredArgsConstructor;
 import org.pragma.foodcourtusers.domain.model.User;
 import org.pragma.foodcourtusers.domain.spi.IUserPersistencePort;
-import org.pragma.foodcourtusers.infrastructure.exception.NoDataFoundException;
 import org.pragma.foodcourtusers.infrastructure.exception.UserAlreadyExistException;
 import org.pragma.foodcourtusers.infrastructure.exception.UserNotFoundException;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.UserEntity;
-import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IUserRepository;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.mapper.UserEntityMapper;
-
-import java.util.List;
+import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IUserRepository;
 
 @RequiredArgsConstructor
 public class UserJpaAdapter implements IUserPersistencePort {

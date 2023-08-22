@@ -1,8 +1,11 @@
 package org.pragma.foodcourtusers.infrastructure.exception;
 
-public class UserAlreadyExistException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+
+public class UserAlreadyExistException extends CustomException{
 
     public UserAlreadyExistException() {
-        super(ExceptionConstant.USER_ALREADY_EXIST);
+        super(String.valueOf(HttpStatus.BAD_REQUEST.value()),
+                MessageExceptionsEnum.USER_ALREADY_EXIST.getMessage());
     }
 }

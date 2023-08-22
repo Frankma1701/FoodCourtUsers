@@ -6,11 +6,13 @@ import org.pragma.foodcourtusers.application.dto.request.AuthenticationRequest;
 import org.pragma.foodcourtusers.application.dto.request.OwnerRequest;
 import org.pragma.foodcourtusers.application.dto.request.UserRequest;
 import org.pragma.foodcourtusers.application.dto.response.JwtResponse;
-import org.pragma.foodcourtusers.infrastructure.util.Roles;
-import org.pragma.foodcourtusers.application.handler.IUserHandler;
 import org.pragma.foodcourtusers.infrastructure.security.AuthenticationHandler;
+import org.pragma.foodcourtusers.infrastructure.util.Roles;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")

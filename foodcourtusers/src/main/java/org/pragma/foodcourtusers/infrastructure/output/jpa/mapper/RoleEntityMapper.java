@@ -7,17 +7,15 @@ import org.mapstruct.ReportingPolicy;
 import org.pragma.foodcourtusers.domain.model.Role;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.RoleEntity;
 
-import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface RoleEntityMapper{
 
-    RoleEntity toEntity(Role role);
+
 
     @Mapping(target = "name", source = "roleEntity.name")
     Role toRole(RoleEntity roleEntity);
 
-    List<Role> toRoleList(List<RoleEntity> roleEntityList);
 }

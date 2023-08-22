@@ -1,8 +1,10 @@
 package org.pragma.foodcourtusers.infrastructure.exception;
 
-public class UserNotFoundException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+
+public class UserNotFoundException extends CustomException{
 
     public UserNotFoundException() {
-        super(ExceptionConstant.USER_NOT_FOUND);
+        super(String.valueOf(HttpStatus.NOT_FOUND.value()),MessageExceptionsEnum.USER_NOT_FOUND.getMessage());
     }
 }

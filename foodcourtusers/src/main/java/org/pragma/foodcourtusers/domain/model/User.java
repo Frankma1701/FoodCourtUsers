@@ -1,7 +1,6 @@
 package org.pragma.foodcourtusers.domain.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 
 public class User {

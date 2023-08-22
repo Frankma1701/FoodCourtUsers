@@ -4,10 +4,10 @@ public enum Roles{
 
     ADMIN(1L, "ADMIN"), OWNER(2L, "OWNER"), EMPLOYEE(3L, "EMPLOYEE"), CUSTOMER(4L, "CUSTOMER");
 
-    private Long id;
-    private String name;
+    private final Long id;
+    private final String name;
 
-    private Roles (Long id, String name){
+    Roles (Long id, String name){
         this.id = id;
         this.name = name;
     }

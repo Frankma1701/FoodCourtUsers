@@ -1,8 +1,10 @@
 package org.pragma.foodcourtusers.infrastructure.exception;
 
-public class RoleNotFoundException extends RuntimeException{
+import org.springframework.http.HttpStatus;
 
-    public RoleNotFoundException() {
-        super(ExceptionConstant.ROLE_NOT_FOUND_EXCEPTION);;
+public class RoleNotFoundException extends CustomException{
+
+    public RoleNotFoundException()  {
+        super(String.valueOf(HttpStatus.NOT_FOUND.value()),MessageExceptionsEnum.ROLE_NOT_FOUND_EXCEPTION.getMessage());
     }
 }

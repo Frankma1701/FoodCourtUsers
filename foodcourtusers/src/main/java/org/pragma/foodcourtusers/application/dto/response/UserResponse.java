@@ -2,8 +2,6 @@ package org.pragma.foodcourtusers.application.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
