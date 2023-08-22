@@ -21,7 +21,6 @@ public class UserJpaAdapter implements IUserPersistencePort {
 
     @Override
     public User saveUser(User user) {
-
         if(iUserRepository.findByDocumentId(user.getDocumentId()).isPresent()){
             throw new UserAlreadyExistException();
         }
@@ -32,6 +31,11 @@ public class UserJpaAdapter implements IUserPersistencePort {
     @Override
     public User getUser(String documentId) {
         return userEntityMapper.toUser(iUserRepository.findByDocumentId(documentId).orElseThrow(UserNotFoundException::new));
+    }
+
+    @Override
+    public User getUserById (Long id){
+        return userEntityMapper.toUser(iUserRepository.getReferenceById(id));
     }
 
 }

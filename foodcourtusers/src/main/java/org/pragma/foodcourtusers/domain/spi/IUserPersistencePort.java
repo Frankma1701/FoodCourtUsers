@@ -9,4 +9,7 @@ public interface IUserPersistencePort {
 
     User getUser(String documentId);
 
+    User getUserById(Long id);
+
+
 }

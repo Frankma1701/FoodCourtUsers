@@ -5,8 +5,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Getter
-@Setter
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class UserRequest {
 

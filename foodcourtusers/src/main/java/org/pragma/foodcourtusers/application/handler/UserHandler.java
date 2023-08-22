@@ -31,4 +31,10 @@ public class UserHandler implements IUserHandler {
         return userResponseMapper.toResponse(user);
     }
 
+    @Override
+    public UserResponse getUserById(Long id) {
+        User user = iUserServicePort.getUserById(id);
+        return userResponseMapper.toResponse(user);
+    }
+
 }

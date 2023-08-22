@@ -10,5 +10,7 @@ public interface IUserServicePort {
     User saveUser(User user);
 
     User getUser(String documentId);
+
+    User getUserById(Long id);
     
 }

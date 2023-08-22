@@ -15,4 +15,10 @@ public class UserRestController{
     public ResponseEntity<UserResponse> getUser(@PathVariable(name="documentId") String documentId){
         return ResponseEntity.ok(userHandler.getUser(documentId));
     }
+
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<UserResponse> getUserById(@PathVariable(name="id") Long id ){
+        return ResponseEntity.ok(userHandler.getUserById(id));
+    }
 }

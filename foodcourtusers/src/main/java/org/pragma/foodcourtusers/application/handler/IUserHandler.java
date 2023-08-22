@@ -14,4 +14,7 @@ public interface IUserHandler {
 
     UserResponse getUser(String documentId);
 
+    UserResponse getUserById(Long id);
+
+
 }

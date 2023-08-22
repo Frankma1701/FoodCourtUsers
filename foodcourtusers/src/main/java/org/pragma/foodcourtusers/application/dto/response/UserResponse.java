@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
-@Setter
 @Getter
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class UserResponse {
     private Long id;
     private String name;

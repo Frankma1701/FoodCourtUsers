@@ -30,20 +30,42 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 
 class UserRestControllerTest{
 
+    @Mock
+    private UserHandler userHandler;
+
+    @InjectMocks
+    private UserRestController userRestController;
+
+    @BeforeEach
+    public void setUp() {
+    }
+
     @Test
     public void testGetUser() {
-        UserHandler userHandler = mock(UserHandler.class);
-        String documentId = "user123";
-        UserResponse userResponse = FactoryUserResponse.mockObject;
-        when(userHandler.getUser(documentId)).thenReturn(userResponse);
-        UserRestController userRestController = new UserRestController(userHandler);
-        ResponseEntity<UserResponse> response = userRestController.getUser(documentId);
-        verify(userHandler).getUser(documentId);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(userResponse, response.getBody());
+        String documentId = FactoryUser.DOCUMENT_ID_USER_TO_ASK;
+        UserResponse expectedResponse = FactoryUserResponse.expectedObject;
+        when(userHandler.getUser(documentId)).thenReturn(expectedResponse);
+        ResponseEntity<UserResponse> responseEntity = userRestController.getUser(documentId);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(expectedResponse, responseEntity.getBody());
+        verify(userHandler, times(1)).getUser(documentId);
+        verifyNoMoreInteractions(userHandler);
+    }
+
+    @Test
+    public void testGetUserById() {
+        Long userId = FactoryUser.ID_USER_TO_ASK;
+        UserResponse expectedResponse = FactoryUserResponse.expectedObject;
+        when(userHandler.getUserById(userId)).thenReturn(expectedResponse);
+        ResponseEntity<UserResponse> responseEntity = userRestController.getUserById(userId);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(expectedResponse, responseEntity.getBody());
+        verify(userHandler, times(1)).getUserById(userId);
+        verifyNoMoreInteractions(userHandler);
     }
 
 

@@ -18,4 +18,10 @@ public class FactoryUser{
             "3228754154",LocalDate.of(2001,4,13),
             "lopezpedro@hm.co", "pedroperez--",2L);
 
+    public static final String DOCUMENT_ID_USER_TO_ASK = "16584";
+
+    public static final Long ID_ROLE_TO_ASK = 1L;
+
+    public static final Long ID_USER_TO_ASK = 1L;
+
 }
