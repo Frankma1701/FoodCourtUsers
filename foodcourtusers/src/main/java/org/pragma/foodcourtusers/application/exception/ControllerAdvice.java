@@ -1,4 +1,4 @@
-package org.pragma.foodcourtusers.infrastructure.exception;
+package org.pragma.foodcourtusers.application.exception;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

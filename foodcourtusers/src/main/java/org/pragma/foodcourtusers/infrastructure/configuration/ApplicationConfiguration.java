@@ -1,7 +1,7 @@
 package org.pragma.foodcourtusers.infrastructure.configuration;
 
 import lombok.RequiredArgsConstructor;
-import org.pragma.foodcourtusers.infrastructure.exception.UserNotFoundException;
+import org.pragma.foodcourtusers.application.exception.UserNotFoundException;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

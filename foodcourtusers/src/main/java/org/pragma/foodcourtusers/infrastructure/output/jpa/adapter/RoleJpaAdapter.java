@@ -3,7 +3,7 @@ package org.pragma.foodcourtusers.infrastructure.output.jpa.adapter;
 import lombok.RequiredArgsConstructor;
 import org.pragma.foodcourtusers.domain.model.Role;
 import org.pragma.foodcourtusers.domain.spi.IRolePersistencePort;
-import org.pragma.foodcourtusers.infrastructure.exception.RoleNotFoundException;
+import org.pragma.foodcourtusers.application.exception.RoleNotFoundException;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.mapper.RoleEntityMapper;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IRoleRepository;
 

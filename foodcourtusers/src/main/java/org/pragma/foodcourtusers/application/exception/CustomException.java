@@ -1,4 +1,4 @@
-package org.pragma.foodcourtusers.infrastructure.exception;
+package org.pragma.foodcourtusers.application.exception;
 
 public class CustomException extends RuntimeException{
     private final String errorCode;

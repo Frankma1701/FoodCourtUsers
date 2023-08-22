@@ -1,13 +1,12 @@
 package org.pragma.foodcourtusers.infrastructure.output.jpa.adapter;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.pragma.foodcourtusers.domain.model.Role;
-import org.pragma.foodcourtusers.infrastructure.exception.RoleNotFoundException;
+import org.pragma.foodcourtusers.application.exception.RoleNotFoundException;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.RoleEntity;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.mapper.RoleEntityMapper;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IRoleRepository;

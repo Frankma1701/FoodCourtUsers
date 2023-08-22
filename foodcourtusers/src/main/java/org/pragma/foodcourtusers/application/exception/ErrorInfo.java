@@ -1,10 +1,11 @@
-package org.pragma.foodcourtusers.infrastructure.exception;
+package org.pragma.foodcourtusers.application.exception;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
-@Data
 @Builder
+@Getter
 public class ErrorInfo {
     private String code;
     private String message;

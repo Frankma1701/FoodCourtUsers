@@ -1,15 +1,13 @@
 package org.pragma.foodcourtusers.infrastructure.output.jpa.adapter;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.pragma.foodcourtusers.domain.model.User;
-import org.pragma.foodcourtusers.infrastructure.exception.UserAlreadyExistException;
-import org.pragma.foodcourtusers.infrastructure.exception.UserNotFoundException;
+import org.pragma.foodcourtusers.application.exception.UserAlreadyExistException;
+import org.pragma.foodcourtusers.application.exception.UserNotFoundException;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.entity.UserEntity;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.mapper.UserEntityMapper;
 import org.pragma.foodcourtusers.infrastructure.output.jpa.repository.IUserRepository;
